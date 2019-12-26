@@ -7,7 +7,7 @@ const User = mongoose.model('User', {
         required: true,
         trim: true
     },
-    
+
     email: {
         type: String,
         required: true,
@@ -42,3 +42,5 @@ const User = mongoose.model('User', {
         }
     }
 })
+
+module.exports = User;
