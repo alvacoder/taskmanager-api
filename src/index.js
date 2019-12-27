@@ -76,6 +76,8 @@ app.post('/tasks', (req, res) => {
 
 //Using Async Await
 
+//User endpoints
+
 app.get('/users', async (req, res) => {
     //const user = new User;
     try {
@@ -107,10 +109,25 @@ app.post('/users', async(req, res)=> {
         await user.save();
         res.status(201).send(user);
     } catch (error) {
-        res.status(400).send();
+        res.status(400).send(error);
     }
 })
 
+app.patch('/users/:id', async(req, res)=> {
+
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true})
+        if(!user) {
+            return res.status(404).send();
+        }
+        res.send(user)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+
+// Task endpoints
 app.get('/tasks', async(req, res)=> {
     try {
         const task = await Task.find({})
