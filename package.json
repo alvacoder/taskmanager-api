@@ -11,6 +11,7 @@
   "author": "Idris Adeniji",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "express": "^4.17.1",
     "mongodb": "^3.4.1",
     "mongoose": "^5.8.3",
